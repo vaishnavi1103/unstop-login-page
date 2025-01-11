@@ -1,0 +1,155 @@
+<div class=" fx-row f-wrap app-bg-color">
+  <div class="image-container flex-1 fx-row fr-center justify-content-c">
+    <img
+      src="../../assets/illustration.png"
+      alt="Illustration"
+      class="flex-1"
+    />
+  </div>
+
+  <div class="flex-1 app-bg-color">
+    <div class="form-container border-1 border-color-grey fx-col gap-14">
+      <div class="font-size-36">
+        Welcome to <br />
+        <b class="primary-color">Unstop</b>
+      </div>
+
+      <!-- google and facebook section -->
+      <div class="fr-center gap-10 fx-col">
+        <div
+          class="fr-center f-wrap gap-14 border-1 border-color-grey wd-100 justify-content-c logo-container"
+        >
+          <img src="../../assets/google-logo.svg" class="icon-20" /><span
+            class="font-size-16"
+            >Login with Google</span
+          >
+        </div>
+        <div
+          class="fr-center f-wrap gap-14 border-1 border-color-grey wd-100 justify-content-c logo-container"
+        >
+          <img
+            src="../../assets/facebook-logo.svg"
+            class="facebook-logo"
+          /><span class="font-size-16">Login with Facebook</span>
+        </div>
+      </div>
+
+      <!-- or section -->
+      <div class="fx-row fr-center justify-content-c">
+        <span class="line line-color"></span>
+        <span class="wd-20 justify-content-c fx-row">or</span
+        ><span class="line line-color"></span>
+      </div>
+
+      <!-- form container -->
+      <form [formGroup]="loginForm" class="wd-100">
+        <!-- username -->
+        <div
+          class="fx-row wd-100 fr-center justify-content-c gap-14 mb-10 mat-form-field-bg-color"
+        >
+          <img src="../../assets/account_circle.svg" />
+          <div class="fx-col gap-5 wd-80">
+            <span class="mt-5 font-size-12">Username</span>
+            <mat-form-field class="login-form-field"
+              ><input
+                matInput
+                formControlName="userName"
+                placeholder="Username"
+            /></mat-form-field>
+
+            <mat-error
+              class="error-msg"
+              *ngIf="
+                loginForm?.get('userName')?.hasError('required') &&
+                (loginForm?.get('userName')?.touched || isSubmit)
+              "
+              >Please enter username.</mat-error
+            >
+            <mat-error
+              class="error-msg"
+              *ngIf="loginForm?.get('userName')?.hasError('pattern')"
+              >Please enter valid username.</mat-error
+            >
+          </div>
+        </div>
+
+        <!-- email -->
+        <div
+          class="fx-row wd-100 fr-center justify-content-c gap-14 mb-10 mat-form-field-bg-color"
+        >
+          <img src="../../assets/mail.svg" />
+          <div class="fx-col gap-5 wd-80">
+            <span class="mt-5 font-size-12">Email</span>
+            <mat-form-field class="login-form-field"
+              ><input matInput formControlName="email" placeholder="Email"
+            /></mat-form-field>
+            <mat-error
+              class="error-msg"
+              *ngIf="
+                loginForm?.get('email')?.hasError('required') &&
+                (loginForm?.get('email')?.touched || isSubmit)
+              "
+              >Please enter email.</mat-error
+            >
+            <mat-error
+              class="error-msg"
+              *ngIf="loginForm?.get('email')?.hasError('email')"
+              >Please enter valid email.</mat-error
+            >
+          </div>
+        </div>
+
+        <!-- password -->
+        <div
+          class="fx-row wd-100 fr-center justify-content-c gap-14 mb-10 mat-form-field-bg-color"
+        >
+          <img src="../../assets/key.svg" />
+          <div class="fx-col gap-5 wd-80">
+            <span class="mt-5 font-size-12">Password</span>
+            <mat-form-field class="login-form-field"
+              ><input
+                matInput
+                [type]="hide ? 'password' : 'text'"
+                formControlName="password"
+                placeholder="Password"
+                #password
+              />
+              <mat-icon matSuffix (click)="hide = !hide">{{
+                password?.type === "password" ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </mat-form-field>
+            <mat-error
+              class="error-msg"
+              *ngIf="
+                loginForm?.get('password')?.hasError('required') &&
+                (loginForm?.get('password')?.touched || isSubmit)
+              "
+              >Please enter password.</mat-error
+            >
+            <mat-error
+              class="error-msg"
+              *ngIf="loginForm?.get('password')?.hasError('minlength')"
+              >Password should contain atleast 8 characters.</mat-error
+            >
+          </div>
+        </div>
+
+        <!-- remember me and forgot password -->
+        <div class="fx-row fr-center remember-me-section">
+          <div class="fx-row fr-center gap-5 mb-10">
+            <input type="checkbox" class="checkbox-color" /> Remember me
+          </div>
+          <div class="primary-color cursor-pointer">Forgot Password</div>
+        </div>
+        <div class="mb-10">
+          <button class="wd-100 btn-class cursor-pointer" (click)="login()">
+            Login
+          </button>
+        </div>
+        <div class="wd-100 fr-center justify-content-c">
+          Don't have and account?<span class="primary-color">Register</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

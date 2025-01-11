@@ -1,0 +1,20 @@
+<div class="ht-100 fr-center f-wrap justify-content-c fx-col">
+  <div class="mb-50 fr-center fx-col">
+    <span class="font-size-36">Welcome to </span><br />
+    <span class="font-weight-900 font-size-46 primary-color">Unstop</span>
+  </div>
+  <mat-card appearance="outlined" class="card-container">
+    <div class="fx-col fr-center gap-5">
+      <img src="../../assets/profile-img.svg" class="mb-10" />
+
+      <b class="primary-color"
+        >{{ userData?.firstName }} {{ userData?.lastName }}</b
+      >
+      <div class="font-size-12">{{ userData?.email }}</div>
+      <div class="font-size-12">{{ userData?.gender | titlecase }}</div>
+      <button class="btn-class cursor-pointer" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </mat-card>
+</div>
